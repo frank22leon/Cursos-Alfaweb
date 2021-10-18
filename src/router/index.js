@@ -16,7 +16,7 @@ const routes = [
     }
   },
   {
-    path: '/administration',
+    path: '/administracion',
     name: 'Administration',
     component: () => import('../views/Administration.vue'),
     meta: {
@@ -24,7 +24,7 @@ const routes = [
     }
   },
   {
-    path: '/edition',
+    path: '/curso/:id',
     name: 'Edition',
     component: () => import('../views/Edition.vue'),
     meta: {

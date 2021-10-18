@@ -21,7 +21,7 @@ export default {
     return {
       itemsUnLogin: [
         {
-          title: 'Registration',
+          title: 'Registrarse',
           icon: 'mdi-account-box',
           path: '/registration'
         },

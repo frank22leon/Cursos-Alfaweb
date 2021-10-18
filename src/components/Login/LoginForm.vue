@@ -40,6 +40,28 @@
         </v-btn>
       </v-layout>
     </v-form>
+
+    <template>
+      <v-row justify="center">
+        <v-dialog v-model="dialog" persistent max-width="300">
+          <v-card>
+            <v-card-title class="text-h5 text-center">
+              Ups!!! verifica tus datos
+            </v-card-title>
+            <v-card-text class="text-center">
+              si no estas resgistrado puedes hacerlo en el boton Registrarse
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn color="info" text @click="dialog = false">
+                Cerrar
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+    </template>
   </div>
 </template>
 
@@ -47,6 +69,7 @@
 import Firebase from 'firebase'
 export default {
   data: () => ({
+    dialog: false,
     valid: true,
     password: '',
     show1: false,
@@ -68,8 +91,8 @@ export default {
           })
           this.$router.push('/home')
         })
-        .catch((error) => {
-          console.error(error)
+        .catch(() => {
+          this.dialog = true
         })
     },
     reset() {

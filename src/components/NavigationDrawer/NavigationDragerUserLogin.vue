@@ -24,9 +24,8 @@ export default {
         {
           title: 'Administration',
           icon: 'mdi-badge-account-horizontal',
-          path: '/administration'
+          path: '/administracion'
         },
-        { title: 'Edición', icon: 'mdi-square-edit-outline', path: '/edition' }
       ]
     }
   }

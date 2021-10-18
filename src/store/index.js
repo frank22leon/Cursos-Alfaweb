@@ -9,6 +9,34 @@ export default new Vuex.Store({
     currentUser: null,
     grades: []
   },
+
+  getters: {
+    totalNumberOfStudentsAllowed(state) {
+      return state.grades.reduce((accumulator, grade) => {
+        accumulator += grade.cupos
+        return accumulator
+      }, 0)
+    },
+    totalNumberOfStudentsEnrolled(state) {
+      return state.grades.reduce((accumulator, grade) => {
+        accumulator += grade.inscritos
+        return accumulator
+      }, 0)
+    },
+    totalNumberOfSeatsRemaining(state) {
+      return state.grades.reduce((accumulator, grade) => {
+        accumulator += grade.cupos - grade.inscritos
+        return accumulator
+      }, 0)
+    },
+    cantidadTotalCursosTerminados(state) {
+      return state.grades.filter((grade) => grade.estado).length
+    },
+    cantidadTotalCursosActivos(state) {
+      return state.grades.filter((grade) => !grade.estado).length
+    }
+  },
+
   mutations: {
     SET_CURRENT_USER(state, newUser) {
       state.currentUser = newUser
