@@ -13,7 +13,7 @@
         v-model="password"
         :counter="20"
         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        :rules="[rules.required, rules.min]"
+        :rules="[passwordRules.required, passwordRules.min]"
         :type="show1 ? 'text' : 'password'"
         name="input-10-1"
         label="Contraseña"
@@ -54,9 +54,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn color="info" text @click="dialog = false">
-                Cerrar
-              </v-btn>
+              <v-btn color="info" text @click="dialog = false"> Cerrar </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -73,7 +71,12 @@ export default {
     valid: true,
     password: '',
     show1: false,
-    rules: { required: (v) => !!v || 'Ingresa una contraseña correcta' },
+    passwordRules: {
+      required: (v) => !!v || 'Ingresa una contraseña correcta',
+      min: (v) =>
+        v.length <= 20 || 'La contraseña debe tener maximo 20 caracteres'
+    },
+
     email: '',
     emailRules: [
       (v) => !!v || 'Ingresa un correo correcto',

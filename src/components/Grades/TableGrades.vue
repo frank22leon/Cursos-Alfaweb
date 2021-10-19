@@ -25,7 +25,6 @@
         </div>
       </template>
     </v-data-table>
-
   </div>
 </template>
 
@@ -48,14 +47,31 @@ export default {
   },
   methods: {
     deleteGrade(id) {
-      Firebase.firestore()
-        .collection('cursos')
-        .doc(id)
-        .delete()
-        .then(() => this.$store.dispatch('getGrades'))
+      this.$swal({
+        title: 'Estás seguro de borrar el curso?',
+        text: 'No Podrás revertir los cambios!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, quiero borrarlo!',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Firebase.firestore()
+            .collection('cursos')
+            .doc(id)
+            .delete()
+            .then(() => {
+              this.$swal('El curso se ha borrado exitosamente').then(() => {
+                this.$store.dispatch('getGrades')
+              })
+            })
+        }
+      })
     },
     editGrade(item) {
-      this.$router.push(`/curso/${item.id}`);
+      this.$router.push(`/curso/${item.id}`)
     }
   }
 }

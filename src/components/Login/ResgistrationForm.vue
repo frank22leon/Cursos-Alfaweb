@@ -13,7 +13,7 @@
         v-model="password"
         :counter="20"
         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        :rules="[rules.required, rules.min]"
+        :rules="[passwordRules.required, passwordRules.min]"
         :type="show1 ? 'text' : 'password'"
         label="Contraseña"
         @click:append="show1 = !show1"
@@ -49,10 +49,10 @@ export default {
     valid: true,
     password: '',
     show1: false,
-    rules: {
+    passwordRules: {
       required: (v) => !!v || 'Ingresa una contraseña correcta',
       min: (v) =>
-        v.length <= 20 || 'La contraseña debe tener menos de 20 caracteres'
+        v.length <= 20 || 'La contraseña debe tener maximo 20 caracteres'
     },
 
     email: '',
