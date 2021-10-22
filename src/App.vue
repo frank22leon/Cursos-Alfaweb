@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-container>
     <Toolbar />
     <v-main>
       <transition name="fade" mode="out-in">
@@ -7,7 +7,7 @@
       </transition>
     </v-main>
     <Footer />
-  </v-app>
+  </v-container>
 </template>
 
 <script>
