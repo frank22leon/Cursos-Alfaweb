@@ -57,7 +57,7 @@
               LIMPIAR VALIDACION
             </v-btn>
           </div>
-          <v-btn color="blue" @click="returnPage"> Regresar </v-btn>
+          <v-btn color="blue white--text" @click="returnPage"> Regresar </v-btn>
         </v-layout>
       </v-form>
     </v-container>

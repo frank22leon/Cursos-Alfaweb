@@ -2,12 +2,16 @@
   <v-app>
     <Toolbar />
     <v-main>
-      <router-view />
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </v-main>
+    <Footer />
   </v-app>
 </template>
 
 <script>
+import Footer from './components/Footer.vue'
 import Toolbar from './components/Toolbar.vue'
 export default {
   name: 'App',
@@ -17,8 +21,20 @@ export default {
   }),
 
   components: {
-    Toolbar
+    Toolbar,
+    Footer
   }
 }
 </script>
-<style></style>
+<style>
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transition: translateX(2em);
+}
+
+.fade-enter-active,
+.fade-leave-active-active {
+  transition: all 1s ease;
+}
+</style>

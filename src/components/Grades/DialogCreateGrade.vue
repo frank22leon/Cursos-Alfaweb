@@ -86,7 +86,7 @@
                     LIMPIAR VALIDACION
                   </v-btn>
                 </div>
-                <v-btn color="blue" @click="dialog = false"> Cerrar </v-btn>
+                <v-btn color="blue white--text" @click="dialog = false"> Cerrar </v-btn>
               </v-layout>
             </v-form>
           </v-container>
