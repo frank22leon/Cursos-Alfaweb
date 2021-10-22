@@ -86,7 +86,9 @@
                     LIMPIAR VALIDACION
                   </v-btn>
                 </div>
-                <v-btn color="blue white--text" @click="dialog = false"> Cerrar </v-btn>
+                <v-btn color="blue white--text" @click="dialog = false">
+                  Cerrar
+                </v-btn>
               </v-layout>
             </v-form>
           </v-container>
@@ -109,7 +111,8 @@ export default {
     costo: null,
     codigo: '',
     descripcion: '',
-    estado: false
+    estado: false,
+    fecha: new Date().toLocaleDateString(),
   }),
 
   methods: {
@@ -128,7 +131,8 @@ export default {
             costo: this.costo,
             codigo: this.codigo,
             descripcion: this.descripcion,
-            estado: this.estado
+            estado: this.estado,
+            fecha: this.fecha
           })
           .then(() => this.$router.push('/home'))
       }

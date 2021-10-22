@@ -26,7 +26,7 @@
                       >
                     </div>
                     <span
-                      >Duración: <strong>{{ grade.duracion }}</strong></span
+                      >Duración: <strong>20/10/2021</strong></span
                     >
                   </div>
                 </v-timeline-item>
@@ -48,7 +48,7 @@
                 <v-timeline-item color="deep-purple lighten-1" small>
                   <div>
                     <div class="font-weight-normal">
-                      <span>Fecha de registro:</span>
+                      <span>Fecha de registro: {{ grade.fecha }}</span>
                     </div>
                     <span></span>
                   </div>

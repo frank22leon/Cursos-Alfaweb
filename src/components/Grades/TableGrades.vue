@@ -14,6 +14,9 @@
           {{ item.estado ? 'Si' : 'No' }}
         </v-chip>
       </template>
+      <template v-slot:[`item.fecha`]="{ item }">
+        <v-chip color="success">{{ item.fecha }}</v-chip>
+      </template>
       <template v-slot:[`item.actions`]="{ item }">
         <div>
           <v-btn icon @click="editGrade(item)">
@@ -41,6 +44,7 @@ export default {
         { text: 'Duración', value: 'duracion' },
         { text: 'Costo', value: 'costo' },
         { text: 'Terminado', value: 'estado' },
+        { text: 'Fecha', value: 'fecha' },
         { text: 'Acciones', value: 'actions' }
       ]
     }
@@ -55,7 +59,7 @@ export default {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, quiero borrarlo!',
-        cancelButtonText: 'Cancelar',
+        cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
           Firebase.firestore()
