@@ -85,17 +85,21 @@ export default {
   },
   methods: {
     saveChanges() {
-      if (this.$refs.formulario.validate()) {
-        Firebase.firestore()
-          .collection('cursos')
-          .doc(this.grade.id)
-          .update(this.grade)
-          .then(() => {
-            this.$router.push('/home')
-          })
-          .catch((error) => {
-            console.error(error)
-          })
+      if (this.grade.inscritos > this.grade.cupos) {
+        this.$swal('Los alumnos inscritos son mayores a los cupos disponibles')
+      } else {
+        if (this.$refs.formulario.validate()) {
+          Firebase.firestore()
+            .collection('cursos')
+            .doc(this.grade.id)
+            .update(this.grade)
+            .then(() => {
+              this.$router.push('/home')
+            })
+            .catch((error) => {
+              console.error(error)
+            })
+        }
       }
     },
     reset() {

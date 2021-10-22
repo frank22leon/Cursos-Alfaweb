@@ -114,20 +114,24 @@ export default {
 
   methods: {
     addGrade() {
-      Firebase.firestore()
-        .collection('cursos')
-        .add({
-          nombre: this.nombre,
-          imagen: this.imagen,
-          cupos: this.cupos,
-          inscritos: this.inscritos,
-          duracion: this.duracion,
-          costo: this.costo,
-          codigo: this.codigo,
-          descripcion: this.descripcion,
-          estado: this.estado
-        })
-        .then(() => this.$router.push('/home'))
+      if (this.inscritos > this.cupos) {
+        this.$swal('Los alumnos inscritos son mayores a los cupos disponibles')
+      } else {
+        Firebase.firestore()
+          .collection('cursos')
+          .add({
+            nombre: this.nombre,
+            imagen: this.imagen,
+            cupos: this.cupos,
+            inscritos: this.inscritos,
+            duracion: this.duracion,
+            costo: this.costo,
+            codigo: this.codigo,
+            descripcion: this.descripcion,
+            estado: this.estado
+          })
+          .then(() => this.$router.push('/home'))
+      }
     },
     reset() {
       this.$refs.form.reset()
