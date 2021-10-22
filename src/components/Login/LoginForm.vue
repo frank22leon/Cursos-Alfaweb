@@ -95,7 +95,7 @@ export default {
           this.$router.push('/home')
         })
         .catch(() => {
-          this.dialog = true
+          this.$swal('Upss, correo o contraseña incorrectos')
         })
     },
     reset() {

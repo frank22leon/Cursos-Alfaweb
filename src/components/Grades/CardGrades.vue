@@ -2,7 +2,12 @@
   <div>
     <v-container>
       <v-row>
-        <v-col v-for="grade in $store.state.grades" :key="grade.id">
+        <v-col
+          cols="12"
+          md="4"
+          v-for="grade in $store.state.grades"
+          :key="grade.id"
+        >
           <v-card max-width="350" class="mx-auto mb-4 elevation-2">
             <v-img height="250px" :src="grade.imagen"> </v-img>
 
